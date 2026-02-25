@@ -111,3 +111,12 @@ If you finish early or want an extra challenge, try one of these:
 - Stay curious. The unpredictability is intentional and part of the experience.
 
 When you finish, Playlist Chaos will feel more predictable, and you will have taken your first steps into AI-assisted debugging.
+## Summary
+- The summary should be 5–7 sentences covering:
+-The core concept students needed to understand
+-Where students are most likely to struggle
+-Where AI was helpful vs misleading
+-One way they would guide a student without giving the answer
+
+
+
