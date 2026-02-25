@@ -76,6 +76,42 @@ For each fix:
 - Add a short comment describing the fix  
 
 Your fixes may involve logic, calculations, search behavior, playlist grouping, lucky pick behavior, or anything else you discover.
+### Fixed Bugs
+Following are the fixed bugs in the code for playlist_logic.py file
+1. Classification Bug
+2. Statitics bugs
+3. Search functionality bugs
+- Bugs Details:
+  **********Classification Bug**********
+    # Comment
+    
+    The following code isn't checking the both criteria for classifaction of hype and chill
+    for example for hype it classifying on the base of genre not using tile and 
+    for chill it classifying on the base of title not on the base of genre.
+    
+    # what need to be done
+     we will edit the code and classify them on the base of both genre and title by using or oprerator """
+    # solution
+    is_hype_keyword = any(k in genre for k in hype_keywords) or any(k in title for k in hype_keywords)
+    is_chill_keyword = any(k in title for k in chill_keywords) or any(k in genre for k in chill_keywords)
+   *******Statistics calculation bug*******
+   # What need to be fixed:
+    Math need to be fixed. AS the code need to be corrected as it not taking the consideration about the the all songs to cover the requrement. Edited code: total = len(hype)
+    total = len(all_songs)
+   *******Statistics calculation bug*******
+   # Problem What need to be fixed: 
+   statistics for the total energy weren't correct that producing wrong average energy value
+   # Suggestion + solution:
+   we need to replace the hype with all-songs
+   total_energy = sum(song.get("energy", 0) for song in all_songs)
+   ***********Search Functionality bug***********
+
+   # what is the problem:
+   there's bug in the search functionality as it's not checking the query inside the value rather doing opposit
+   # Suggestion/solution
+   we will revere the code rather using value in q we will write q in value
+   if value and q in value:
+
 
 ### 4. Test your changes  
 
@@ -113,10 +149,10 @@ If you finish early or want an extra challenge, try one of these:
 When you finish, Playlist Chaos will feel more predictable, and you will have taken your first steps into AI-assisted debugging.
 ## Summary
 - The summary should be 5–7 sentences covering:
--The core concept students needed to understand
--Where students are most likely to struggle
--Where AI was helpful vs misleading
--One way they would guide a student without giving the answer
+- Students need to understand that structure of the application that being provided and understand what the requirements for the desired solution. How can they achieve it rather than find the solution directly from the AI. They should go through the codes and understand which line doing what. and learn from AI if they are confuse so that they can find the bug easily
+-Students might struggle to ask the right prompt from AI that lead to desire solution.
+-AI is great tool that help you to find the bugs or understand the code before finding the bugs but wrong writen prompt might lead to full solution rather than uncovering the problem step by step
+-One way that would guide a student without giving the answer is understanding the code first and understand what is doing and compare the code witht the expected outcome. If it sound weired ask AI what do you feel and ask suggestion rather than answer to see if you are thinking right and on a right track.
 
 
 
