@@ -82,7 +82,8 @@ Following are the fixed bugs in the code for playlist_logic.py file
 2. Statitics bugs
 3. Search functionality bugs
 - Bugs Details:
-  - 1.Classification Bug
+- 
+  -Classification Bug
     # Problem
     The following code isn't checking the both criteria for classifaction of hype and chill
     for example for hype it classifying on the base of genre not using tile and 
@@ -94,21 +95,23 @@ Following are the fixed bugs in the code for playlist_logic.py file
     is_hype_keyword = any(k in genre for k in hype_keywords) or any(k in title for k in hype_keywords)
     is_chill_keyword = any(k in title for k in chill_keywords) or any(k in genre for k in chill_keywords)
    
-   - 2.Statistics calculation bug
-    - 1.
+  -Statistics calculation bug
+  
+    1.
 
        # Problem:
           Math need to be fixed.
        # Suggestion/sSolution:
           AS the code need to be corrected as it not taking the consideration about the the all songs to cover the requrement. Edited code: total = len(hype)
           total = len(all_songs)
-     - 2.
+    2.
        # Problem: 
        statistics for the total energy weren't correct that producing wrong average energy value
        # Suggestion/solution:
        we need to replace the hype with all-songs
        total_energy = sum(song.get("energy", 0) for song in all_songs)
-  - 3. Search Functionality bug
+      
+  -Search Functionality bug
 
      # Problem:
      there's bug in the search functionality as it's not checking the query inside the value rather doing opposit
