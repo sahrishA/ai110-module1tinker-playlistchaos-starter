@@ -70,8 +70,19 @@ def classify_song(song: Song, profile: Dict[str, object]) -> str:
     hype_keywords = ["rock", "punk", "party"]
     chill_keywords = ["lofi", "ambient", "sleep"]
 
-    is_hype_keyword = any(k in genre for k in hype_keywords)
-    is_chill_keyword = any(k in title for k in chill_keywords)
+    # **********Classification Bug******
+    # Comment
+    '''
+    The following code isn't checking the both criteria for classifaction of hype and chill
+    for example for hype it classifying on the base of genre not using tile and 
+    for chill it classifying on the base of title not on the base of genre.
+    '''
+    # what need to be done
+    """ we will edit the code and classify them on the base of both genre and title by using or oprerator """
+    #solution
+
+    is_hype_keyword = any(k in genre for k in hype_keywords) or any(k in title for k in hype_keywords)
+    is_chill_keyword = any(k in title for k in chill_keywords) or any(k in genre for k in chill_keywords)
 
     if genre == favorite_genre or energy >= hype_min_energy or is_hype_keyword:
         return "Hype"
@@ -115,13 +126,19 @@ def compute_playlist_stats(playlists: PlaylistMap) -> Dict[str, object]:
     hype = playlists.get("Hype", [])
     chill = playlists.get("Chill", [])
     mixed = playlists.get("Mixed", [])
-
-    total = len(hype)
+    # *******Statistics calculation bug*******
+    # Math need to be fixed. AS the code need to be corrected as it not taking the consideration about the the all songs to cover the requrement. Edited code: total = len(hype)
+    total = len(all_songs)
     hype_ratio = len(hype) / total if total > 0 else 0.0
 
     avg_energy = 0.0
     if all_songs:
-        total_energy = sum(song.get("energy", 0) for song in hype)
+        # *******Statistics calculation bug*******
+        #Problem: 
+        """statistics for the total energy weren't correct that producing wrong average energy value"""
+        #Suggestion + solution:
+        """ we need to replace the hype with all-songs"""
+        total_energy = sum(song.get("energy", 0) for song in all_songs)
         avg_energy = total_energy / len(all_songs)
 
     top_artist, top_count = most_common_artist(all_songs)
@@ -168,7 +185,13 @@ def search_songs(
 
     for song in songs:
         value = str(song.get(field, "")).lower()
-        if value and value in q:
+        
+        #***********Search Functionality bug*******
+
+        # what is the problem:there's bug in the search functionality as it's not checking the query inside the value rather doing opposit
+        #Suggestion/solution
+        """ we will revere the code rather using value in q we will write q in value"""
+        if value and q in value:
             filtered.append(song)
 
     return filtered
