@@ -73,7 +73,7 @@ def classify_song(song: Song, profile: Dict[str, object]) -> str:
     # **********Classification Bug******
     # Comment
     '''
-    The following code isn't checking the both criteria for classifaction of hype and chill
+    The following code isn't checking the both criteria for classifaction of hype and chill. It has reversed the function.
     for example for hype it classifying on the base of genre not using tile and 
     for chill it classifying on the base of title not on the base of genre.
     '''
@@ -127,7 +127,7 @@ def compute_playlist_stats(playlists: PlaylistMap) -> Dict[str, object]:
     chill = playlists.get("Chill", [])
     mixed = playlists.get("Mixed", [])
     # *******Statistics calculation bug*******
-    # Math need to be fixed. AS the code need to be corrected as it not taking the consideration about the the all songs to cover the requrement. Edited code: total = len(hype)
+    # Math need to be fixed. AS the code isn't not taking the consideration about the the all songs to cover the requrement. Edited code: total = len(hype)
     total = len(all_songs)
     hype_ratio = len(hype) / total if total > 0 else 0.0
 
@@ -188,7 +188,7 @@ def search_songs(
         
         #***********Search Functionality bug*******
 
-        # what is the problem:there's bug in the search functionality as it's not checking the query inside the value rather doing opposit
+        # what is the problem:there's bug in the search functionality as it's not checking the query inside the value rather checking value inside the query
         #Suggestion/solution
         """ we will revere the code rather using value in q we will write q in value"""
         if value and q in value:
